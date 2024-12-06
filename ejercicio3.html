@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movimiento Suave</title>
+  <style>
+    /* Estilo de la figura que se moverá */
+    .moving-figure {
+      width: 100px; /* Ancho de la figura */
+      height: 100px; /* Alto de la figura */
+      background: linear-gradient(0deg, blue 0, blue 50%, white); /* Gradiente azul-blanco */
+      border: 1px solid #000; /* Borde negro */
+      position: absolute; /* Posicionamiento absoluto para control total del movimiento */
+      top: 0; /* Posición inicial en la parte superior */
+      left: 0; /* Posición inicial en la esquina izquierda */
+      animation: move 18s infinite linear; /* Animación continua de 18 segundos */
+    }
+
+    /* Animación de movimiento suave en cuatro direcciones */
+    @keyframes move {
+      0% { top: 0; left: 0; } /* Inicio: esquina superior izquierda */
+      25% { top: 0; left: calc(100vw - 100px); } /* Derecha: esquina superior derecha */
+      50% { top: calc(100vh - 100px); left: calc(100vw - 100px); } /* Abajo: esquina inferior derecha */
+      75% { top: calc(100vh - 100px); left: 0; } /* Izquierda: esquina inferior izquierda */
+      100% { top: 0; left: 0; } /* Vuelve al punto de inicio */
+    }
+  </style>
+</head>
+<body>
+
+<!-- Figura que se moverá en cuatro direcciones -->
+<div class="moving-figure"></div>
+
+</body>
+</html>

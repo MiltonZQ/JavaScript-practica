@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Figura Rotación y Escalado</title>
+  <style>
+    /* Contenedor centralizado para los elementos */
+    .container {
+      display: flex;
+      flex-direction: column; /* Apila los elementos en columna */
+      align-items: center; /* Centra los elementos horizontalmente */
+      margin-top: 20px;
+    }
+
+    /* Estilo de la figura */
+    .figure {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(0deg, blue 0, blue 50%, white); /* Gradiente azul/blanco */
+      border: 1px solid #000; /* Borde negro */
+      margin: 20px;
+      transition: transform 0.2s ease-in-out; /* Suaviza la transformación */
+    }
+
+    /* Estilo para los sliders */
+    .slider {
+      width: 300px; /* Ancho de los sliders */
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Contenedor principal -->
+<div class="container">
+  <!-- Figura a rotar y escalar -->
+  <div class="figure" id="figure"></div>
+  
+  <!-- Slider para rotación -->
+  <label for="rotate">Rotación: </label>
+  <input type="range" id="rotate" min="0" max="360" value="0" class="slider">
+  
+  <!-- Slider para escalado -->
+  <label for="scale">Escalar: </label>
+  <input type="range" id="scale" min="1" max="2" step="0.01" value="1" class="slider">
+</div>
+
+<script>
+  // Referencia al elemento que se va a manipular (la figura)
+  const figure = document.getElementById('figure');
+  
+  // Referencias a los sliders de rotación y escalado
+  const rotateSlider = document.getElementById('rotate');
+  const scaleSlider = document.getElementById('scale');
+
+  // Evento que se ejecuta al cambiar el valor del slider de rotación
+  rotateSlider.addEventListener('input', () => {
+    const rotateValue = rotateSlider.value; // Valor actual del slider de rotación
+    const scaleValue = scaleSlider.value; // Valor actual del slider de escalado
+    // Aplica transformación combinada de rotación y escalado
+    figure.style.transform = `rotate(${rotateValue}deg) scale(${scaleValue})`;
+  });
+
+  // Evento que se ejecuta al cambiar el valor del slider de escalado
+  scaleSlider.addEventListener('input', () => {
+    const rotateValue = rotateSlider.value; // Valor actual del slider de rotación
+    const scaleValue = scaleSlider.value; // Valor actual del slider de escalado
+    // Aplica transformación combinada de rotación y escalado
+    figure.style.transform = `rotate(${rotateValue}deg) scale(${scaleValue})`;
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"> <!-- Define la codificación de caracteres como UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura la vista para dispositivos móviles -->
+  <title>Figura Humana Mejorada</title> <!-- Título de la página -->
+  <style>
+    body {
+      margin: 0; /* Elimina el margen por defecto del body */
+      overflow: hidden; /* Evita que aparezcan barras de desplazamiento */
+    }
+
+    .person {
+      position: absolute; /* Posiciona la figura de forma absoluta dentro del body */
+      bottom: 0; /* Coloca la figura en la parte inferior de la pantalla */
+      left: 0; /* Comienza desde el lado izquierdo */
+      width: 50px; /* Ancho de la figura */
+      height: 150px; /* Altura de la figura */
+      animation: move-horizontal 5s infinite alternate ease-in-out; /* Aplica la animación de movimiento horizontal */
+    }
+
+    .head {
+      width: 50px; /* Ancho de la cabeza */
+      height: 50px; /* Altura de la cabeza */
+      background-color: #f5c6a5; /* Color de la cabeza */
+      border-radius: 50%; /* Hace que la cabeza sea redonda */
+      position: relative; /* Posición relativa para el centrado */
+      margin: 0 auto; /* Centra la cabeza horizontalmente */
+    }
+
+    .body {
+      width: 40px; /* Ancho del cuerpo */
+      height: 70px; /* Altura del cuerpo */
+      background-color: #000; /* Color del cuerpo */
+      position: relative; /* Posición relativa para el centrado */
+      margin: 0 auto; /* Centra el cuerpo horizontalmente */
+    }
+
+    .arm {
+      width: 20px; /* Ancho de los brazos */
+      height: 60px; /* Altura de los brazos */
+      background-color: #000; /* Color de los brazos */
+      position: absolute; /* Posiciona los brazos de forma absoluta dentro del cuerpo */
+      top: 10px; /* Coloca los brazos a 10px del top del cuerpo */
+    }
+
+    .arm.left {
+      left: -20px; /* Posiciona el brazo izquierdo a la izquierda del cuerpo */
+      transform-origin: top left; /* Define el punto de transformación para la animación */
+    }
+
+    .arm.right {
+      right: -20px; /* Posiciona el brazo derecho a la derecha del cuerpo */
+      transform-origin: top right; /* Define el punto de transformación para la animación */
+    }
+
+    .leg {
+      width: 20px; /* Ancho de las piernas */
+      height: 70px; /* Altura de las piernas */
+      background-color: #000; /* Color de las piernas */
+      position: absolute; /* Posiciona las piernas de forma absoluta dentro de la figura */
+      bottom: 0; /* Coloca las piernas en la parte inferior de la figura */
+    }
+
+    .leg.left {
+      left: 0; /* Posiciona la pierna izquierda */
+    }
+
+    .leg.right {
+      right: 0; /* Posiciona la pierna derecha */
+    }
+
+    @keyframes move-horizontal {
+      0% { left: 0; } /* Al inicio, la figura está en la posición 0 */
+      100% { left: calc(100vw - 50px); } /* Al final, la figura se desplaza hasta el borde derecho de la pantalla */
+    }
+
+    @keyframes walk {
+      0%, 100% {
+        transform: rotate(0deg); /* Al inicio y al final, los brazos y piernas están en posición vertical */
+      }
+      50% {
+        transform: rotate(20deg); /* En el medio de la animación, se rotan 20 grados para simular movimiento */
+      }
+    }
+
+    .arm.left, .arm.right, .leg.left, .leg.right {
+      animation: walk 0.5s infinite alternate; /* Aplica la animación de caminar a los brazos y piernas */
+    }
+  </style>
+</head>
+<body>
+
+<div class="person"> <!-- Contenedor principal de la figura humana -->
+  <div class="head"></div> <!-- Cabeza de la figura -->
+  <div class="body"> <!-- Cuerpo de la figura -->
+    <div class="arm left"></div> <!-- Brazo izquierdo -->
+    <div class="arm right"></div> <!-- Brazo derecho -->
+  </div>
+<div class="leg left"></div> <!-- Pierna izquierda -->
+<div class="leg right"></div> <!-- Pierna derecha -->
+</div>
+
+</body>
+</html>
